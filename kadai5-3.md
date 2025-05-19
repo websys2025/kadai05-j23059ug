@@ -11,7 +11,7 @@
         * callback:コールバック関数名(JSONPとして出力する際のコールバック関数名。UTF-8でURLエンコードした文字列。)
         * limit:最大件数(同一の郵便番号で複数件のデータが存在する場合に返される件数の上限値（数字）　※デフォルト：20)
     * レスポンスのサンプル
-        ```
+```
 	"message": null,
 	"results": [
 		{
@@ -36,8 +36,8 @@
 		}
 	],
 	"status": 200
-} 
-	```
+}
+```
 ### Q3-2. 各自で調査したAPIについて説明せよ。
 * APIの名称と参照URL
 	* Deck of Cards API([https://deckofcardsapi.com/]https://deckofcardsapi.com/)
@@ -57,7 +57,7 @@
         * cards.suit:カードのスーツ(string型)
         * cards.code:カードのコード(string型)
     * レスポンスのサンプル
-	```
+```
 {
     "success": true,
     "deckid": "kxozasf3edqu",
@@ -86,7 +86,7 @@
     "remaining": 50
 }
 
-	```
+```
   
 ### Q3-3. 感想
 * 今回の課題で苦労したこと
