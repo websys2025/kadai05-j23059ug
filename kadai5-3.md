@@ -10,8 +10,8 @@
         * zipcode:郵便番号(7桁の数字。ハイフン付きでも可。完全一致検索。)
         * callback:コールバック関数名(JSONPとして出力する際のコールバック関数名。UTF-8でURLエンコードした文字列。)
         * limit:最大件数(同一の郵便番号で複数件のデータが存在する場合に返される件数の上限値（数字）　※デフォルト：20)
-    *レスポンスのサンプル
-        *
+    * レスポンスのサンプル
+        ```
 	"message": null,
 	"results": [
 		{
@@ -37,12 +37,61 @@
 	],
 	"status": 200
 } 
-
+	```
 ### Q3-2. 各自で調査したAPIについて説明せよ。
 * APIの名称と参照URL
+	* Deck of Cards API([https://deckofcardsapi.com/]https://deckofcardsapi.com/)
 * エンドポイントと機能
+	* https://deckofcardsapi.com/api/deck/new/shuffle/?deck_count=1
+ 	* トランプカードの操作ができるWebAPI。
+ 	* カードをシャッフルする、カードを引く、デッキ作成などの操作が可能。
 * リクエストとレスポンスのフォーマット
+    * https://deckofcardsapi.com/api/
+        * このURLにリクエストパラメータを加え、リクエストを行います。
+    *リクエストパラメータの一例
+        * deck_id:デッキID(string型。デッキの識別子。)
+        * Cards:カード名(string型。コンマ区切り文字列としてのカード。)
+        * deck_count:デッキの数(int型)
+        * cards.image:カードの画像(string型)
+        * cards.value:カードの値(string型)
+        * cards.suit:カードのスーツ(string型)
+        * cards.code:カードのコード(string型)
+    * レスポンスのサンプル
+	```
+{
+    "success": true,
+    "deckid": "kxozasf3edqu",
+    "cards": [
+        {
+            "code": "6H",
+            "image": "https://deckofcardsapi.com/static/img/6H.png",
+            "images": {
+                "svg": "https://deckofcardsapi.com/static/img/6H.svg",
+                "png": "https://deckofcardsapi.com/static/img/6H.png"
+            },
+            "value": "6",
+            "suit": "HEARTS"
+        },
+        {
+            "code": "5S",
+            "image": "https://deckofcardsapi.com/static/img/5S.png",
+            "images": {
+                "svg": "https://deckofcardsapi.com/static/img/5S.svg",
+                "png": "https://deckofcardsapi.com/static/img/5S.png"
+            },
+            "value": "5",
+            "suit": "SPADES"
+        }
+    ],
+    "remaining": 50
+}
+
+	```
+  
 ### Q3-3. 感想
 * 今回の課題で苦労したこと
+	*それぞれのAPIの特性や、リクエストのフォーマットを参照するのが大変だと感じた。APIによっては、説明の少ないものもあると気がつき、使うまでにさらに苦労すると感じた。
 * 演習を通して理解できたこと
+	* 
 * Web APIの利便性や課題など
+	*  
