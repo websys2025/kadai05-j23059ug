@@ -4,9 +4,9 @@
     <title>演習課題5-2：外部APIの呼び出しテスト</title>
 </head>
 <body>
-    <h1 id="msg">何かのAPI</h1>
+    <h1 id="msg">Deck of Cards API</h1>
     <form name="apiform"><p>
-        何かのフォーム：<input type="text" name="form_data">
+        [入力した数]枚数分のカードを表示：<input type="text" name="form_data">
         <button type="button" id="btn1" onclick="some_api(this.form)">実行</button>
     </p></form>
     
@@ -14,7 +14,18 @@
     <script>
         async function some_api(myForm) {
             // ここにコードを書く
-            document.getElementById("result").innerHTML += myForm.form_data.value+"<br />";
+            const num = parseInt(myForm.form_data.value);
+            if (isNaN(num) || num < 1 || num > 52) {
+                document.getElementById("result").innerHTML = "1～52の範囲で入力してください<br />";
+                return;
+            }
+            const res = await fetch(`https://deckofcardsapi.com/api/deck/new/draw/?count=${num}`);
+            const data = await res.json();
+            let html = '';
+            for (const card of data.cards) {
+                html += `<img src="${card.image}" alt="${card.code}" style="width:80px;">`;
+            }
+            document.getElementById("result").innerHTML = html;
             document.apiform.reset();
         }
     </script>
