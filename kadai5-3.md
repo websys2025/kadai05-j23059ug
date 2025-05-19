@@ -40,7 +40,7 @@
 ```
 ### Q3-2. 各自で調査したAPIについて説明せよ。
 * APIの名称と参照URL
-	* Deck of Cards API([https://deckofcardsapi.com/]https://deckofcardsapi.com/)
+	* Deck of Cards API(https://deckofcardsapi.com/)
 * エンドポイントと機能
 	* https://deckofcardsapi.com/api/deck/new/shuffle/?deck_count=1
  	* トランプカードの操作ができるWebAPI。
