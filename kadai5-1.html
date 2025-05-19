@@ -16,7 +16,31 @@
             const endpoint = "https://zipcloud.ibsnet.co.jp/api/search";
             // ここにコードを書く
             // zipcloudのAPI呼び出して結果を表示する
-            document.getElementById("result").innerHTML =  myForm.zipcode.value; // 現状ではそのまま表示しているだけ
+            const zipcode = myForm.zipcode.value;
+            const url = `${endpoint}?zipcode=${encodeURIComponent(zipcode)}`;
+            try {
+                const response = await fetch(url);
+                const data = await response.json();
+                if (data.status === 200 && data.results) {
+                    const result = data.results[0];
+                    const response = await fetch(`${endpoint}?zipcode=${encodeURIComponent(zipcode)}`);
+                    const data = await response.json();
+                    if (data.status === 200 && data.results) {
+                        const result = data.results[0];
+                        document.getElementById("result").innerHTML =
+                            `住所：${result.address1}${result.address2}${result.address3}`;
+                    } else {
+                        document.getElementById("result").innerHTML =
+                            `エラー：${data.message || '該当する住所が見つかりません'}`;
+                    }
+                } else {
+                    document.getElementById("result").innerHTML =
+                        `エラー：${data.message || '該当する住所が見つかりません'}`;
+                }
+            } catch (error) {
+                document.getElementById("result").innerHTML =
+                    `エラー：${error.message}`;
+            }
         }
     </script>
 </body>
